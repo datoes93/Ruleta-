@@ -96,4 +96,34 @@ class Bets {
         }
   
    
-      }    }
+      }  
+      PayAll(element){
+        if(element.name=== "PayAll"){
+  
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "you will go back to the beginning",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, go to the beginning'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.reload();
+              /*
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )*/
+            }
+          })
+         
+  
+  
+          
+        }
+  
+     }
+    }

@@ -16,6 +16,41 @@
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
+    
+    <div class="container">
+        <h1 class="text-center">Welcome to Roulette Game</h1>
+        <div id="app-bets" class="row pt-5">
+            <div class="jugadores col-md-5" id="player">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Add a player</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="addplayer-form" class="formulario">
+
+                            <div class="formulario__grupo" id="grupo__nameplayer">
+                                <div class="formulario__grupo-input">
+                           
+                                <input type="text" id="nameplayer" name="nameplayer" placeholder="Name player" class="formulario__input form-control">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                           
+                             </div>
+                                <p class="formulario__input-error">El nombre solo puede tener letras, por favor ingrese la información correcta</p>
+                           </div>
+
+                           <div class="formulario__grupo" id="grupo__accountnumbre">
+                            <div class="formulario__grupo-input">
+                            
+                                <input type="text" id="accountnumbre" name="accountnumbre" placeholder="Account number" class="formulario__input form-control">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                           
+                            
+                            </div>
+                            <p class="formulario__input-error">La cuenta solo puede un número de 8 digitos</p>
+                           </div>
+
+
+
     <script src="js/main.js"></script>
     <script src="js/library/Rulette.js"></script>
     <script src="js/library/sweetalert2@11.js"></script>

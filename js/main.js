@@ -196,6 +196,96 @@ StartGame(element){
     }
 
   }
+
+  DetermineWinner(){
+      
+    setTimeout(function(){
+      var segment = theWheel.getIndicatedSegment();
+      var toastMixin = Swal.mixin({
+        toast: true,
+        icon: 'success',
+        //title: segment.text,
+        //text: "Wining Number",
+        animation: false,
+        position: 'top-right',
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true,
+        /*didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }*/
+      });
+      
+      toastMixin.fire({
+        animation: true,
+        title: 'winning number:   ' + segment.text
+      });       
+      var WinningNumber = parseInt(segment.text);
+      const objBet = new Bets();
+      
+      var arrayobj = [];    //array local para almacenar ganadores
+      let objrecorrer = Object.keys(objListBet);
+      let objGeneral = Object.keys(objLista);
+      for (let i = 0; i < objrecorrer.length; i++) {
+        const element = objrecorrer[i];
+        const elementGeneral = objGeneral[i];
+       // console.log(objListBet[element]);
+        //console.log(objLista[elementGeneral]);
+        
+        if(objListBet[element].betnumber === WinningNumber && objListBet[element].idplayer === objLista[elementGeneral].id){
+          objLista[elementGeneral].initialvalue = objLista[elementGeneral].initialvalue +  objListBet[element].betValue;
+          Profits = Profits - objListBet[element].betValue;
+          arrayobj.push(objLista[elementGeneral].nameplayer);
+         // arrayobj.push(objwinner);
+         delete objListBet[element];
+         
+        }else{
+          objLista[elementGeneral].initialvalue = objLista[elementGeneral].initialvalue -  objListBet[element].betValue;
+           Profits = Profits + objListBet[element].betValue;
+          delete objListBet[element];
+          if(objLista[elementGeneral].initialvalue <=0){
+           objFinalize.push(objLista[elementGeneral]);
+
+            delete objLista[elementGeneral];
+          }
+
+        }
+        
+     }
+     //console.log(Profits);
+     if(arrayobj.length !== 0){
+     setTimeout(function(){
+      objBet.ShowMessage('Ganadores:  '+arrayobj.join(",   "), 'success');
+      var tabla = document.getElementById('Players-to-bet').getElementsByTagName('tbody')[0];
+      tabla.innerHTML = '';
+
+      
+      objBet.ListAllPlayer();  
+      resetWheel();  return false;
+
+     }, 4000);
+     }else {
+      setTimeout(function(){
+        var tabla = document.getElementById('Players-to-bet').getElementsByTagName('tbody')[0];
+        tabla.innerHTML = '';
+        objBet.ListAllPlayer();  
+        resetWheel();  return false;
+       
+
+      }, 4000);
+     }
+   
+     /* console.log(WinningNumber);
+      console.log(objListBet);
+      console.log(objLista);*/
+
+    }, 14000);
+
+    
+
+  }
+
   
  
 }

@@ -43,5 +43,57 @@ class Bets {
         cellbtndelete.appendChild(btncelldelete);
         cellID.appendChild(textcellID);
      }
+     GotoPlay(element){
+        let property = Object.keys(objLista);
+        if(element.name === "gotoplay" && property.length !== 0){
+    
+          const player = document.getElementById('player');
+          const listplayer = document.getElementById('player-list');
+          const buttongroup = document.getElementById('gamebuttongroup');
+      
+          if(player.style.display === "none"){
+            player.style.display = "block";          
+            buttongroup.style.display = "none";
+  
+           
+           
+       
+          }else{
+  
+            player.style.display ="none"      
+            buttongroup.style.display = "block";   
+            listplayer.style.position = "absolute";
+            listplayer.style.left = "0";
+            listplayer.style.right = "0";
+            listplayer.style.margin ="auto";
+            listplayer.style.width = "700px";
+    
+          
+           
+            
+          }
+        }
+  
+      }    
  
-}
+
+      DeletePlayer(element){
+        if(element.name === "btndelete"){
+      
+         element.parentElement.parentElement.remove();
+        
+  
+        objLista.forEach((item,index,arr)=>{
+          if(item.id==element.id)
+          { arr.splice(index,1 )}
+        })
+          //this.DeletePlayerObject(element);
+      
+       
+          this.ShowMessage('Player successfully deleted', 'info');
+      
+  
+        }
+  
+   
+      }    }

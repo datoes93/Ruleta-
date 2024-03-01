@@ -172,6 +172,30 @@ class Bets {
   }
 }
 
+StartGame(element){
+      
+    if(element.name === "startgame"){
+      //const buttongroup = document.getElementById('gamebuttongroup');
+      const Tobet = document.getElementById('ToBet');
+      const back = document.getElementById('back');
+      const stargame = document.getElementById('stargame');
+      const allplayer = document.getElementById('all-player');
+      const playerlist = document.getElementById('player-list');
+      const roulette = document.getElementById('roulette');
+      
+      back.style.display = "none";
+      ToBet.style.display = 'block';
+      stargame.style.display = "none";
+      allplayer.style.display = "block";
+      playerlist.style.display = "none";
+      roulette.style.display = "block";
+      this.ListAllPlayer();
+      
+      
+
+    }
+
+  }
   
  
 }

@@ -69,5 +69,33 @@ class Bets {
         }
   
       }
+
+      DeletePlayerObject(element){
+        objLista.forEach((item,index,arr)=>{
+          if(item.id==element.id)
+          
+          { 
+            objFinalize.push(item),
+            arr.splice(index,1 )}
+         
+          
+        });
+        
+      }
+
+      finalizePlayer(element){
+        if(element.name ==='btnFinalize'){
+          element.parentElement.parentElement.remove();
+          this.DeletePlayerObject(element);
+         
+  
+         delete objBetvaluenumber['betnumber'+element.id];
+         delete objBetvaluenumber['betvalue'+element.id];
+  
+        }
+      
+  
+      }
+  
  
 }

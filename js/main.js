@@ -43,5 +43,31 @@ class Bets {
         cellbtndelete.appendChild(btncelldelete);
         cellID.appendChild(textcellID);
      }
+     BackAddPlayer(element){
+      
+        if(element.name === "back"){
+          const buttongroup = document.getElementById('gamebuttongroup');
+          const roulette = document.getElementById('roulette');
+          const player = document.getElementById('player');
+          const listplayer = document.getElementById('player-list');
+          if(player.style.display === "block"){
+            player.style.display = "none";
+            buttongroup.style.display ="block";
+            roulette.style.display = "block";
+            
+          }else {
+            player.style.display ="block";
+            buttongroup.style.display ="none";
+            roulette.style.display = "none";
+            listplayer.style.position = "absolute";
+            listplayer.style.left = "40%";
+                   
+            listplayer.style.width = "700px";
+            //listplayer.style.height = "300px";
+           
+          }
+        }
+  
+      }
  
 }

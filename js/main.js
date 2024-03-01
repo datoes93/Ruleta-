@@ -287,3 +287,98 @@ StartGame(element){
   
  
 }
+
+
+
+
+
+
+/* EVENTOS del DOM*/
+
+// capturo el valor atraves del id del formulario y ademas necesito capturar el evento submit
+//cuando capture el evento quuiero ralizar algo a travpes de la función
+const objListEdit = [];
+const objLista = [];
+const objFinalize = [];
+var id = 0;
+var Profits = 0;
+var objListBet = [];
+var respuesta = false;
+
+
+document.getElementById('addplayer-form')
+.addEventListener('submit', function(e){
+ 
+
+   const name = document.getElementById('nameplayer').value;
+   const account = document.getElementById('accountnumbre').value;
+
+   //console.log(fields.nameplayer);
+   //console.log(fields.accountnumbre);
+   if(fields.nameplayer && fields.accountnumbre){
+   id = id +1;
+
+  const objPlayer = new player(id, name, account);
+  
+  objLista.push(objPlayer);  
+
+  const objBet = new Bets();
+  objBet.addPlayer(objPlayer); 
+  objBet.ShowMessage('Player successfully created', 'success');
+  objBet.ResetForm();  
+   
+
+   document.querySelectorAll('.formulario__grupo-correcto').forEach((icono)=> {
+     icono.classList.remove('formulario__grupo-correcto');
+     
+   });
+   fields.nameplayer = false;
+   fields.accountnumbre = false;
+  }else{
+
+
+    document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+    setTimeout(function(){
+      document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
+    }, 2000);
+    
+  }
+  e.preventDefault();
+//console.log(objLista);
+});
+
+
+
+document.getElementById('player')
+.addEventListener('click', function(e){
+  
+  const objBet = new Bets();
+  objBet.GotoPlay(e.target);
+
+});
+
+document.getElementById('player-list')
+.addEventListener('click', function(e){
+  const objBet = new Bets();
+  objBet.BackAddPlayer(e.target);
+  objBet.StartGame(e.target);
+  objBet.DeletePlayer(e.target);
+  //objBet.ModifyPlayer(e.target);
+  
+});
+
+document.getElementById('all-player')
+.addEventListener('click', function(e){
+  const objBet = new Bets();
+  objBet.Tobet(e.target);
+  objBet.finalizePlayer(e.target);
+  objBet.FinishAll(e.target);
+
+});
+
+
+document.getElementById('report').addEventListener('click', function(e){
+  const objBet = new Bets();
+  objBet.PayAll(e.target);
+
+});

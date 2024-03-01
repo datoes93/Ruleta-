@@ -63,8 +63,7 @@ class Bets {
             listplayer.style.left = "40%";
                    
             listplayer.style.width = "700px";
-            //listplayer.style.height = "300px";
-           
+          
           }
         }
   
@@ -78,7 +77,6 @@ class Bets {
             objFinalize.push(item),
             arr.splice(index,1 )}
          
-          
         });
         
       }
@@ -86,15 +84,12 @@ class Bets {
       finalizePlayer(element){
         if(element.name ==='btnFinalize'){
           element.parentElement.parentElement.remove();
-          this.DeletePlayerObject(element);
-         
+          this.DeletePlayerObject(element);         
   
          delete objBetvaluenumber['betnumber'+element.id];
          delete objBetvaluenumber['betvalue'+element.id];
   
-        }
-      
-  
+        } 
       }
 
       
@@ -115,10 +110,7 @@ class Bets {
       allplayer.style.display = 'none';
       roulette.style.display = 'none';
       report.style.display = 'block';
-      earningreport.style.display = 'block';
-      
-      //console.log(objFinalize);
-
+      earningreport.style.display = 'block';  
 
       var tablereport = document.getElementById('tablereport').getElementsByTagName('tbody')[0];
       let objrecorrer = Object.keys(objFinalize);
@@ -155,9 +147,6 @@ class Bets {
         <i class="divtendenciadown fas fa-arrow-down"></i>          
         </div>`;
       }
-
-      
-
       cellID.appendChild(textcellID);
       cellnameplayer.appendChild(textnameplayer);
       cellAmounttobePaid.appendChild(textAmounttobePaid);
@@ -166,8 +155,7 @@ class Bets {
     }
 
     let moneyProfit= new Intl.NumberFormat("es-CO", {style: "currency", currency: "COP", maximumSignificantDigits: 3}).format(Profits);
-    document.getElementById('profits').innerHTML = moneyProfit;
-    
+    document.getElementById('profits').innerHTML = moneyProfit;    
 
   }
 }
@@ -190,9 +178,6 @@ StartGame(element){
       playerlist.style.display = "none";
       roulette.style.display = "block";
       this.ListAllPlayer();
-      
-      
-
     }
 
   }
@@ -286,6 +271,19 @@ StartGame(element){
 
   }
 
+  ShowMessage(message, cssClass){
+    const divmessage = document.createElement('div');
+    divmessage.className = `alert alert-${cssClass}  mt-2`;
+    divmessage.appendChild(document.createTextNode(message));
+    const  container = document.querySelector('.container');
+    const  appbets = document.querySelector('#app-bets');
+    container.insertBefore(divmessage, appbets);
+    const alertaid = setTimeout(function () {
+      document.querySelector('.alert').remove();
+
+    }, 4000);    
+
+  }
   
  
 }
